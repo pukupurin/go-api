@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  api:
+    depends_on:
+      - db
+    ports:
+      - 18080:80
+    build:
+      context: ./src/api/
+    restart: always
+    container_name: "my-api"
+    networks:
+      - myNet
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./src/api/api:/root/api
+    working_dir: "/root/"
+    tty: true
+
+  db:
+    build:
+      context: ./src/db/
+    restart: always
+    container_name: "my-db"
+    ports:
+      - 13306:3306
+    volumes:
+      - ./src/db/mysql:/var/lib/mysql
+      - ./src/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tagudb
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: password
+      TZ: Asia/Tokyo
+    networks:
+      - myNet
+    command:
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    container_name: "my-adminer"
+    restart: always
+    ports:
+      - 19999:8080
+    networks:
+      - myNet
+
+networks:
+  myNet:

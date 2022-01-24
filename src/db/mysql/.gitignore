@@ -1,0 +1,10 @@
+tagudb/
+mysql/
+performance_schema/
+aria_log_control
+aria_log.00000001
+ib_buffer_pool
+ib_logfile0
+ibdata1
+multi-master.info
+ibtmp1
