@@ -17,7 +17,7 @@ func main() {
 	e.Use(middleware.CORS())
 
 	// User関係のDI&ルーティングの初期化
-	handler.User_DI_Routing(e)
+	handler.UserDIRouting(e)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":80"))

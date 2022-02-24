@@ -5,8 +5,8 @@ import (
 )
 
 type User struct {
-	Id int64             `gorm:"id"`
-	Name string          `gorm:"name"`
+	ID   int64  `gorm:"id"`
+	Name string `gorm:"name"`
 
 	CreatedAt *time.Time `gorm:"created_at"`
 	UpdatedAt *time.Time `gorm:"updated_at"`
@@ -16,9 +16,9 @@ type Users []User
 
 // NewUser User のコンストラクタ
 func NewUser(name string) (*User, error) {
-	
+
 	user := &User{
-		Name : name,
+		Name: name,
 	}
 
 	return user, nil

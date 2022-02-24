@@ -1,10 +1,9 @@
 package infra
 
 import (
-
-	"api/domain/repository"
 	"api/domain/model"
-	
+	"api/domain/repository"
+
 	"gorm.io/gorm"
 )
 
@@ -22,5 +21,5 @@ func (ur *UserRepository) Create(user *model.User) (int64, error) {
 		return 0, err
 	}
 
-	return user.Id, nil
+	return user.ID, nil
 }

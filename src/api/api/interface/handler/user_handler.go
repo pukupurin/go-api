@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"api/usecase"
+
 	"github.com/labstack/echo/v4"
 )
 
@@ -19,7 +20,7 @@ type userHandler struct {
 // NewUserHandler User handler のコンストラクタ
 func NewUserHandler(userUsecase usecase.UserUsecase) UserHandler {
 	return &userHandler{
-		userUsecase : userUsecase,
+		userUsecase: userUsecase,
 	}
 }
 
@@ -32,6 +33,7 @@ type DefaultResponse struct {
 	Status  int    `json:"status"`
 	Message string `json:"message"`
 }
+
 // ----------------------------
 
 func (uh *userHandler) CreateUser() echo.HandlerFunc {
@@ -53,7 +55,7 @@ func (uh *userHandler) CreateUser() echo.HandlerFunc {
 			return c.JSON(http.StatusBadRequest, res)
 		}
 
-		res.Status  = 200
+		res.Status = 200
 		res.Message = "success"
 
 		return c.JSON(http.StatusOK, res)
