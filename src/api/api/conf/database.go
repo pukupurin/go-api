@@ -1,12 +1,13 @@
 package conf
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/go-sql-driver/mysql"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 func NewDB() *gorm.DB {
-	db, err := gorm.Open("mysql", "user1:password@tcp(db)/tagudb?parseTime=True&charset=utf8mb4&loc=Asia%2FTokyo")
+	dsn := "user1:password@tcp(db)/tagudb?parseTime=True&charset=utf8mb4&loc=Asia%2FTokyo"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}

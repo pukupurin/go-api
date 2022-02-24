@@ -5,7 +5,7 @@ import (
 	"api/domain/repository"
 	"api/domain/model"
 	
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type UserRepository struct {
