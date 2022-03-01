@@ -1,7 +1,7 @@
 -- テーブル定義
 CREATE TABLE IF NOT EXISTS `users` (
-  `id`         int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
-  `name`       varchar(255) NOT NULL                            COMMENT 'name',
+  `id`         varchar(40)  NOT NULL DEFAULT (UUID()) PRIMARY KEY COMMENT 'id',
+  `name`       varchar(255) NOT NULL                              COMMENT 'name',
 
   `created_at` datetime     DEFAULT CURRENT_TIMESTAMP                             COMMENT 'create datetime',
   `updated_at` datetime     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'last update datetime',

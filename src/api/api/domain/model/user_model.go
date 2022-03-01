@@ -5,7 +5,7 @@ import (
 )
 
 type User struct {
-	ID   int64  `gorm:"id"`
+	ID   string `gorm:"id;default:BIN_TO_UUID(UUID_TO_BIN(UUID(), 1))"`
 	Name string `gorm:"name"`
 
 	CreatedAt *time.Time `gorm:"created_at"`

@@ -16,9 +16,9 @@ func NewUserRepository(conn *gorm.DB) repository.UserRepository {
 }
 
 // Create Userの新規作成
-func (ur *UserRepository) Create(user *model.User) (int64, error) {
+func (ur *UserRepository) Create(user *model.User) (string, error) {
 	if err := ur.Conn.Create(user).Error; err != nil {
-		return 0, err
+		return "", err
 	}
 
 	return user.ID, nil
