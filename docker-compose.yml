@@ -12,10 +12,8 @@ services:
     container_name: "my-api"
     networks:
       - myNet
-    environment:
-      TZ: Asia/Tokyo
     volumes:
-      - ./src/api/api:/root/api
+      - ./src/api/src:/root/api
     working_dir: "/root/"
     tty: true
 
