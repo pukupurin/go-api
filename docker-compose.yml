@@ -20,8 +20,7 @@ services:
     tty: true
 
   db:
-    build:
-      context: ./src/db/
+    image: mysql:8
     restart: always
     container_name: "my-db"
     ports:
@@ -37,10 +36,6 @@ services:
       TZ: Asia/Tokyo
     networks:
       - myNet
-    command:
-      - mysqld
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
 
   adminer:
     depends_on:
