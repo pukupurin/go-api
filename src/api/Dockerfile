@@ -1,20 +1,16 @@
-FROM golang:1.17.6
+FROM golang:1.18.2-alpine3.16
 
-RUN apt-get update && \
-    apt-get install -y locales && \
-    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
-
-WORKDIR /root/log
+# タイムゾーン設定
+RUN apk --update add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del tzdata && \
+    rm -rf /var/cache/apk/*
 
 WORKDIR /root/api
-COPY ./api /root/api/
 
-RUN go mod init api && \
-    go mod tidy
+COPY ./src/go.* /root/api/
+RUN go mod download
+
+COPY ./src /root/api
 
 CMD ["/bin/sh", "/root/api/go.sh"]
