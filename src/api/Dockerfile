@@ -14,7 +14,4 @@ WORKDIR /root/log
 WORKDIR /root/api
 COPY ./api /root/api/
 
-RUN go mod init api && \
-    go mod tidy
-
 CMD ["/bin/sh", "/root/api/go.sh"]
