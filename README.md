@@ -9,7 +9,14 @@
 
 ## Setup
 
+Docker 起動
+
 ```
-docker compose build --no-cache
 docker compose up -d
+```
+
+API 起動 (air でホットリロード)
+
+```
+make run
 ```

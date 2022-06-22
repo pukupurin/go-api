@@ -10,7 +10,8 @@ WORKDIR /root/api
 
 COPY ./src/go.* /root/api/
 RUN go mod download
+RUN go install github.com/cosmtrek/air@latest
 
 COPY ./src /root/api
 
-CMD ["/bin/sh", "/root/api/go.sh"]
+CMD ["tail", "-f", "/dev/null"]

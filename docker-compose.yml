@@ -14,7 +14,7 @@ services:
       - myNet
     volumes:
       - ./api/src:/root/api
-    working_dir: "/root/"
+    working_dir: "/root/api"
     tty: true
 
   db:
