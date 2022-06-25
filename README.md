@@ -12,7 +12,7 @@
 Docker 起動
 
 ```
-docker compose up -d
+make up
 ```
 
 API 起動 (air でホットリロード)
