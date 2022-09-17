@@ -13,7 +13,7 @@ services:
     networks:
       - myNet
     volumes:
-      - ./api/src:/root/api
+      - ./api:/root/api
     working_dir: "/root/api"
     tty: true
 

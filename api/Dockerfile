@@ -8,10 +8,10 @@ RUN apk --update add tzdata && \
 
 WORKDIR /root/api
 
-COPY ./src/go.* /root/api/
+COPY ./go.* /root/api/
 RUN go mod download
 RUN go install github.com/cosmtrek/air@latest
 
-COPY ./src /root/api
+COPY . /root/api
 
 CMD ["tail", "-f", "/dev/null"]
